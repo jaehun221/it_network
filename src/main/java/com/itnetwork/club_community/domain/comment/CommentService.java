@@ -1,6 +1,5 @@
 package com.itnetwork.club_community.domain.comment;
 
-
 import com.itnetwork.club_community.domain.post.Post;
 import com.itnetwork.club_community.domain.post.PostRepository;
 import com.itnetwork.club_community.domain.user.User;
@@ -30,9 +29,8 @@ public class CommentService {
             System.out.println("사용자가 존재하지 않습니다: " + user_nm);
             return null;
         }
-        Post post = postRepository.findById(Math.toIntExact(id)).orElseThrow(() ->
-                new IllegalArgumentException("댓글 작성 실패: 해당 게시글이 존재하지 않습니다." + id));
-
+        Post post = postRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("댓글 작성 실패: 해당 게시글이 존재하지 않습니다. id=" + id));
         request.setUser(user);
         request.setPost(post);
 
@@ -42,8 +40,8 @@ public class CommentService {
     // 댓글 조회
     @Transactional(readOnly = true)
     public List<Comment> findAll(Long id) {
-        Post post = postRepository.findById(Math.toIntExact(id)).orElseThrow(() ->
-                new IllegalArgumentException("해당 게시글이 존재하지 않습니다. id: " + id));
+        Post post = postRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 존재하지 않습니다. id=" + id));
         List<Comment> comments = post.getComments();
         return comments;
     }
