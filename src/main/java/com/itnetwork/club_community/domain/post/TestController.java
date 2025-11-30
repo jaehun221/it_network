@@ -1,4 +1,4 @@
-package com.itnetwork.club_community.post;
+package com.itnetwork.club_community.domain.post;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class TestController {
     private final PostRepository postRepository;
-    
+
     @PostMapping("/test/posts")
     public ResponseEntity<Post> createTestPost() {
         Post post = new Post();
@@ -24,7 +24,7 @@ public class TestController {
         post.setTitle("테스트 게시글");
         post.setContents("테스트 내용");
         post.setReg_id(1);
-        
+
         Post savedPost = postRepository.save(post);
         return ResponseEntity.ok(savedPost);
     }

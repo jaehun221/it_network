@@ -1,8 +1,8 @@
-package com.itnetwork.club_community.comment;
+package com.itnetwork.club_community.domain.comment;
 
 
-import com.itnetwork.club_community.post.Post;
-import com.itnetwork.club_community.user.User;
+import com.itnetwork.club_community.domain.post.Post;
+import com.itnetwork.club_community.domain.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

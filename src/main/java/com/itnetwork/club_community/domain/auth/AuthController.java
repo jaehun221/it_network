@@ -1,8 +1,8 @@
 package com.itnetwork.club_community.domain.auth;
 
-import com.itnetwork.club_community.user.AddUserRequestDto;
-import com.itnetwork.club_community.user.User;
-import com.itnetwork.club_community.user.UserService;
+import com.itnetwork.club_community.domain.user.AddUserRequestDto;
+import com.itnetwork.club_community.domain.user.User;
+import com.itnetwork.club_community.domain.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

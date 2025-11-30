@@ -1,7 +1,7 @@
-package com.itnetwork.club_community.user;
+package com.itnetwork.club_community.domain.user;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.itnetwork.club_community.comment.Comment;
+import com.itnetwork.club_community.domain.comment.Comment;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;

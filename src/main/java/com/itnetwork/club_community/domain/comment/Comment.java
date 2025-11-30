@@ -1,9 +1,9 @@
-package com.itnetwork.club_community.comment;
+package com.itnetwork.club_community.domain.comment;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.itnetwork.club_community.post.Post;
-import com.itnetwork.club_community.user.User;
+import com.itnetwork.club_community.domain.post.Post;
+import com.itnetwork.club_community.domain.user.User;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.OnDelete;

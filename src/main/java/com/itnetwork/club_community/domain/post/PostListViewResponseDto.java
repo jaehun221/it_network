@@ -1,7 +1,7 @@
-package com.itnetwork.club_community.post;
+package com.itnetwork.club_community.domain.post;
 
 
-import com.itnetwork.club_community.comment.CommentResponseDto;
+import com.itnetwork.club_community.domain.comment.CommentResponseDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 

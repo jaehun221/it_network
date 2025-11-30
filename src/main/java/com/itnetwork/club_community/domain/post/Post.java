@@ -1,7 +1,7 @@
-package com.itnetwork.club_community.post;
+package com.itnetwork.club_community.domain.post;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.itnetwork.club_community.comment.Comment;
+import com.itnetwork.club_community.domain.comment.Comment;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

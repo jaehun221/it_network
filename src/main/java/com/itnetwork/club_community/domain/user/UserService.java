@@ -1,4 +1,4 @@
-package com.itnetwork.club_community.user;
+package com.itnetwork.club_community.domain.user;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;

@@ -1,6 +1,6 @@
-package com.itnetwork.club_community.comment;
+package com.itnetwork.club_community.domain.comment;
 
-import com.itnetwork.club_community.post.Post;
+import com.itnetwork.club_community.domain.post.Post;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

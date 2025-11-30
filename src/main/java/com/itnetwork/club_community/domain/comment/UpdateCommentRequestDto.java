@@ -1,4 +1,4 @@
-package com.itnetwork.club_community.comment;
+package com.itnetwork.club_community.domain.comment;
 
 
 import lombok.AllArgsConstructor;

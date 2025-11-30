@@ -1,10 +1,10 @@
-package com.itnetwork.club_community.comment;
+package com.itnetwork.club_community.domain.comment;
 
 
-import com.itnetwork.club_community.post.Post;
-import com.itnetwork.club_community.post.PostRepository;
-import com.itnetwork.club_community.user.User;
-import com.itnetwork.club_community.user.UserRepository;
+import com.itnetwork.club_community.domain.post.Post;
+import com.itnetwork.club_community.domain.post.PostRepository;
+import com.itnetwork.club_community.domain.user.User;
+import com.itnetwork.club_community.domain.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
