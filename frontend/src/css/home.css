@@ -1,0 +1,44 @@
+#home {
+  color: white;
+}
+
+/* Hero */
+.hero {
+  height: 100vh;
+  /* background: rgb(21, 21, 21); */
+  background-image: url('image.png');
+  background-size: cover;             /* 화면 가득 채우기 */
+  background-position: center;        /* 중앙 정렬 */
+  background-repeat: no-repeat;       /* 반복 방지 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+}
+
+/* About */
+.about, .projects, .recruit {
+  padding: 60px 20px;
+  max-width: 1000px;
+  margin: auto;
+  height: 1200px;
+}
+
+.project-list {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.project-card {
+  background: #222;
+  flex: 1;
+  padding: 30px;
+  border-radius: 10px;
+}
