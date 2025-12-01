@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Mega:wght@100..900&display=swap');
+
 #home {
   color: white;
 }
@@ -5,8 +7,7 @@
 /* Hero */
 .hero {
   height: 100vh;
-  /* background: rgb(21, 21, 21); */
-  background-image: url('image.png');
+  background: #0e0f10;
   background-size: cover;             /* 화면 가득 채우기 */
   background-position: center;        /* 중앙 정렬 */
   background-repeat: no-repeat;       /* 반복 방지 */
@@ -18,9 +19,34 @@
   gap: 10px;
 }
 
-.hero h1 {
+.hero .title {
   font-size: 3rem;
+  font-family: "Lexend Mega", sans-serif;
+  font-size: 54px;
+  font-weight: 900;
+  font-style: normal;
+  letter-spacing: -7px;
+  opacity: 0.5;
 }
+
+.hero .title span {
+  transition: all 0.2s ease;
+}
+
+
+.hero .title span:nth-child(1):hover {
+  color: rgb(255, 101, 74);
+}
+
+.hero .title span:nth-child(2):hover {
+  color: rgb(255, 255, 103);
+}
+
+.hero .title span:nth-child(3):hover {
+  color: rgb(106, 255, 121);
+}
+
+
 
 /* About */
 .about, .projects, .recruit {

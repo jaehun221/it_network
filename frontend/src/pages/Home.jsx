@@ -6,8 +6,8 @@ export default function Home() {
     <main id="home">
       {/* Hero Section */}
       <section className="hero">
-        <h1>IT Network</h1>
-        <p>기술을 통해 함께 성장하는 IT 동아리</p>
+        <h1 className='title'><span>IMAGINE. </span><span>CREATE. </span><span>ACHIEVE. </span></h1>
+        
         {/* <button className="cta">가입하기</button> */}
       </section>
 
