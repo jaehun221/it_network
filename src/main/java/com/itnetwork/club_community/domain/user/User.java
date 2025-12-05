@@ -1,7 +1,7 @@
-package com.itnetwork.club_community.user;
+package com.itnetwork.club_community.domain.user;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.itnetwork.club_community.comment.Comment;
+import com.itnetwork.club_community.domain.comment.Comment;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -103,6 +103,6 @@ public class User implements UserDetails {
     // 사용자가 삭제되면 관련 댓글도 함께 삭제됩니다.
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference("user-comments")
-    private List<Comment> comments = new ArrayList<>();
+    private List<Comment> comments = new ArrayList<>(); // TODO: Add Comment
 
 }
