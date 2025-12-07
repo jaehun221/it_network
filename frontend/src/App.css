@@ -1,42 +1,162 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* ================================
+   공통 / 기본 리셋 (선택)
+================================ */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+/* ================================
+   HEADER 기본 스타일
+================================ */
+#header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: center; /* 안쪽 컨테이너를 가운데 배치 */
+  align-items: center;
+  padding: 0 20px;
+  z-index: 1000;
+  margin-bottom: 20px;
+  transition:
+    background-color 0.3s ease,
+    backdrop-filter 0.3s ease,
+    color 0.3s ease;
+}
+
+/* 안쪽 컨테이너 */
+#header .header-inner {
+  width: 100%;
+  max-width: 1200px; /* 중앙 정렬용 폭 제한 */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 로고/제목 */
+#header h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* 네비게이션 */
+#header nav ul {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#header nav a {
+  text-decoration: none;
+  font-weight: bold;
+  display: block;
+  font-size: 18px;
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+/* 호버 효과 */
+#header nav a:hover {
+  opacity: 0.7;
+}
+
+/* ================================
+   상태별 스타일
+================================ */
+
+/* ✔ 메인 + 맨 위: 완전 투명 */
+#header.top {
+  background-color: rgba(0, 0, 0, 0);
+  backdrop-filter: none;
+}
+
+#header.top a,
+#header.top h1 {
+  color: rgb(255, 255, 255);
+}
+
+/* ✔ 메인 + 스크롤: 반투명 블러 */
+#header.scrolled {
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+}
+
+#header.scrolled a,
+#header.scrolled h1 {
+  color: white;
+}
+
+/* ✔ 다른 페이지 (고정 배경) */
+#header.solid {
+  background-color: rgb(21, 21, 21);
+  backdrop-filter: none;
+  position: static; /* 페이지 위에 고정 안 하고 자연스럽게 배치 */
+}
+
+#header.solid a,
+#header.solid h1 {
+  color: white;
+}
+
+/* ================================
+   반응형 스타일
+================================ */
+
+/* 🔹 태블릿 (1024px 이하) */
+@media (max-width: 1024px) {
+  #header {
+    height: 70px;
+    padding: 0 16px;
   }
-  to {
-    transform: rotate(360deg);
+
+  #header .header-inner {
+    max-width: 100%;
+  }
+
+  #header nav ul {
+    gap: 24px;
+  }
+
+  #header nav a {
+    font-size: 16px;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+/* 🔹 모바일 (768px 이하) */
+@media (max-width: 768px) {
+  #header {
+    height: auto;
+    padding: 10px 16px;
   }
-}
 
-.card {
-  padding: 2em;
-}
+  #header .header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
 
-.read-the-docs {
-  color: #888;
+  #header h1 {
+    font-size: 20px;
+  }
+
+  #header nav ul {
+    gap: 16px;
+    flex-wrap: wrap; /* 메뉴가 길어지면 줄바꿈 */
+  }
+
+  #header nav a {
+    font-size: 14px;
+  }
 }
