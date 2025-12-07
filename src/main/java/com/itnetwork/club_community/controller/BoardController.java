@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-@Controller // 사용자 요청 처리
+@Controller //사용자 요청 처리
 public class BoardController {
 
     private final BoardService boardService;
@@ -22,7 +22,7 @@ public class BoardController {
         return "boardList";
     }
 
-    @GetMapping("/board/write-form") // 글쓰기 폼 요청
+    @GetMapping("/board/write-form") //글쓰기 폼 요청
     public String writeForm() {
         return "boardWrite";
     }

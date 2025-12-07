@@ -3,7 +3,7 @@ package com.itnetwork.club_community.domain;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
-@Entity // DB 테이블과 연결
+@Entity //DB 테이블과 연결
 public class Board {
 
     @Id // 기본 키

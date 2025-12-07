@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
-@Service // 비즈니스 로직 담당
+@Service //비즈니스 로직 담당
 @Transactional(readOnly = true) // 기본 읽기 전용
 public class BoardService {
 
