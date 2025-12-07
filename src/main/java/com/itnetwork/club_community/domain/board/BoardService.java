@@ -1,8 +1,5 @@
-package com.itnetwork.club_community.service;
+package com.itnetwork.club_community.domain.board;
 
-import com.itnetwork.club_community.domain.board.Board;
-import com.itnetwork.club_community.dto.BoardWriteRequest;
-import com.itnetwork.club_community.repository.BoardRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;

@@ -1,6 +1,5 @@
-package com.itnetwork.club_community.repository;
+package com.itnetwork.club_community.domain.board;
 
-import com.itnetwork.club_community.domain.board.Board;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

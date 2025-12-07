@@ -1,7 +1,5 @@
-package com.itnetwork.club_community.controller;
+package com.itnetwork.club_community.domain.board;
 
-import com.itnetwork.club_community.dto.BoardWriteRequest;
-import com.itnetwork.club_community.service.BoardService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

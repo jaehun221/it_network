@@ -1,4 +1,4 @@
-package com.itnetwork.club_community.dto;
+package com.itnetwork.club_community.domain.board;
 
 // 폼 데이터를 담아 옮기는 객체
 public class BoardWriteRequest {
