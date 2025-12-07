@@ -3,6 +3,7 @@ package com.itnetwork.club_community.domain.auth;
 import com.itnetwork.club_community.domain.user.AddUserRequestDto;
 import com.itnetwork.club_community.domain.user.User;
 import com.itnetwork.club_community.domain.user.UserService;
+import com.itnetwork.club_community.domain.user.UserInfoDto;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
+import java.util.Optional;
 
 /**
  * 인증 관련 API를 처리하는 컨트롤러
@@ -65,17 +67,16 @@ public class AuthController {
      * @return JWT 액세스 토큰
      */
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody Map<String, String> request, HttpServletResponse response) {
-        // 요청에서 이메일과 비밀번호를 추출합니다
-        String email = request.get("email");
-        String pw = request.get("password");
+    public ResponseEntity<?> login(@RequestBody Map<String, String> loginRequest, HttpServletResponse response) {
+        String email = loginRequest.get("email");
+        String password = loginRequest.get("password");
 
         // 이메일로 사용자를 찾습니다 (없으면 예외 발생)
         User user = userService.findByEmail(email)
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 사용자입니다."));
 
         // 입력한 비밀번호와 저장된 암호화된 비밀번호를 비교합니다
-        if (!bCryptPasswordEncoder.matches(pw, user.getUser_pw())) {
+        if (!bCryptPasswordEncoder.matches(password, user.getUser_pw())) {
             throw new IllegalArgumentException("비밀번호가 일치하지 않습니다.");
         }
 
@@ -91,8 +92,14 @@ public class AuthController {
                 .sameSite("Lax")
                 .build();
         response.addHeader(HttpHeaders.SET_COOKIE, refreshCookie.toString());
+
+        // UserInfoDto 생성
+        UserInfoDto userInfo = UserInfoDto.createUserInfoDto(user);
+
+        // 응답에 accessToken과 userInfo 포함
         return ResponseEntity.ok(Map.of(
-                "accessToken", accessToken
+                "accessToken", accessToken,
+                "userInfo", userInfo
         ));
     }
 
