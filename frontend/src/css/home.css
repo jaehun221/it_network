@@ -27,6 +27,7 @@
   font-style: normal;
   letter-spacing: -7px;
   opacity: 0.5;
+  cursor: default;
 }
 
 .hero .title span {

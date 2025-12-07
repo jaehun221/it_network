@@ -39,7 +39,7 @@ export default function Header() {
           <ul>
             <li><Link to="/about">소개</Link></li>
             <li><Link to="/projects">활동</Link></li>
-            <li><Link to="/board-home">게시판</Link></li>
+            <li><Link to="/board">게시판</Link></li>
             <li><Link to="/recruit">지원</Link></li>
           </ul>
         </nav>
