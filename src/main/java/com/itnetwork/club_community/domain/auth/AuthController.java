@@ -3,7 +3,12 @@ package com.itnetwork.club_community.domain.auth;
 import com.itnetwork.club_community.domain.user.AddUserRequestDto;
 import com.itnetwork.club_community.domain.user.User;
 import com.itnetwork.club_community.domain.user.UserService;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.core.Authentication;
@@ -53,14 +58,14 @@ public class AuthController {
 
     /**
      * 로그인 API
-     * 사용자의 이메일과 비밀번호를 확인하고, 
-     * 인증이 성공하면 JWT 액세스 토큰과 리프레시 토큰을 발급합니다.
-     * 
+     * 사용자의 이메일과 비밀번호를 확인하고,
+     * 인증이 성공하면 액세스 토큰을 반환하며 리프레시 토큰은 HTTP-only 쿠키로 전달합니다.
+     *
      * @param request 로그인 요청 정보 (이메일, 비밀번호)
-     * @return JWT 액세스 토큰과 리프레시 토큰
+     * @return JWT 액세스 토큰
      */
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody Map<String, String> request) {
+    public ResponseEntity<?> login(@RequestBody Map<String, String> request, HttpServletResponse response) {
         // 요청에서 이메일과 비밀번호를 추출합니다
         String email = request.get("email");
         String pw = request.get("password");
@@ -78,24 +83,37 @@ public class AuthController {
         String accessToken = jwtTokenProvider.GenerateToken(user.getEmail());
         String refreshToken = refreshTokenProvider.GenerateRefreshToken(user.getEmail());
 
-        // 액세스 토큰과 리프레시 토큰을 응답으로 반환합니다
+        ResponseCookie refreshCookie = ResponseCookie.from("refreshToken", refreshToken)
+                .httpOnly(true)
+                .secure(false)  // 개발 환경에서 HTTPS가 아니므로 secure는 false, 운영환경에서는 true로 변경
+                .path("/auth")
+                .maxAge(7 * 24 * 60 * 60)
+                .sameSite("Lax")
+                .build();
+        response.addHeader(HttpHeaders.SET_COOKIE, refreshCookie.toString());
         return ResponseEntity.ok(Map.of(
-                "accessToken", accessToken,
-                "refreshToken", refreshToken
+                "accessToken", accessToken
         ));
     }
 
     /**
      * 리프레시 토큰으로 새로운 액세스 토큰을 발급하는 API
-     * 액세스 토큰이 만료되었을 때 리프레시 토큰을 사용해서 새 액세스 토큰을 받을 수 있습니다.
-     * 
-     * @param request 리프레시 토큰이 포함된 요청
+     * 액세스 토큰이 만료되었을 때 쿠키에 저장된 리프레시 토큰을 사용해서 새 액세스 토큰을 받을 수 있습니다.
+     *
+     * @param request 리프레시 토큰 쿠키를 포함한 요청
      * @return 새로운 액세스 토큰
      */
     @PostMapping("/refresh")
-    public ResponseEntity<?> refresh(@RequestBody Map<String, String> request) {
-        // 요청에서 리프레시 토큰을 추출합니다
-        String refreshToken = request.get("refreshToken");
+    public ResponseEntity<?> refresh(HttpServletRequest request) {
+        String refreshToken = null;
+        if (request.getCookies() != null) {
+            for (Cookie cookie : request.getCookies()) {
+                if ("refreshToken".equals(cookie.getName())) {
+                    refreshToken = cookie.getValue();
+                    break;
+                }
+            }
+        }
 
         // 리프레시 토큰이 없으면 예외 발생
         if (refreshToken == null || refreshToken.isEmpty()) {
@@ -119,6 +137,23 @@ public class AuthController {
 
         // 새로운 액세스 토큰을 응답으로 반환합니다
         return ResponseEntity.ok(Map.of("accessToken", newAccessToken));
+    }
+
+    /**
+     * 로그아웃 처리 API
+     * 클라이언트에 저장된 refreshToken 쿠키를 바로 제거합니다.
+     */
+    @PostMapping("/logout")
+    public ResponseEntity<?> logout(HttpServletResponse response) {
+        ResponseCookie deleteCookie = ResponseCookie.from("refreshToken", "")
+                .httpOnly(true)
+                .secure(false)
+                .path("/auth")
+                .maxAge(0)
+                .sameSite("Lax")
+                .build();
+        response.addHeader(HttpHeaders.SET_COOKIE, deleteCookie.toString());
+        return ResponseEntity.ok(Map.of("message", "로그아웃 되었습니다."));
     }
 
     /**
