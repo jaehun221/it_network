@@ -8,6 +8,7 @@ const AuthContext = createContext(null);
 export function AuthProvider({ children }) {
   const [accessToken, setAccessToken] = useState(null);
   const [status, setStatus] = useState("loading");
+  const [userInfo, setUserInfo] = useState(null);
 
   const refreshAccessToken = useCallback(async () => {
     try {
@@ -28,10 +29,12 @@ export function AuthProvider({ children }) {
 
       setAccessToken(data.accessToken);
       setStatus("authenticated");
+      setUserInfo(data.userInfo ?? null); // userInfo 추가
       return data.accessToken;
     } catch (error) {
       setAccessToken(null);
       setStatus("unauthenticated");
+      setUserInfo(null);
       return null;
     }
   }, []);
@@ -41,28 +44,32 @@ export function AuthProvider({ children }) {
   }, [refreshAccessToken]);
 
   const login = useCallback(async (email, password) => {
-    const response = await fetch(`${API_BASE_URL}/auth/login`, {
-      method: "POST",
-      credentials: "include",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
-    });
+  const response = await fetch(`${API_BASE_URL}/auth/login`, {
+    method: "POST",
+    credentials: "include",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, password }),
+  });
 
-    if (!response.ok) {
-      const text = await response.text();
-      throw new Error(text || "Login failed.");
-    }
+  if (!response.ok) {
+    const text = await response.text();
+    throw new Error(text || "Login failed.");
+  }
 
-    const data = await response.json();
+  const data = await response.json();
 
-    if (!data?.accessToken) {
-      throw new Error("Access token missing from response.");
-    }
+  if (!data?.accessToken) {
+    throw new Error("Access token missing from response.");
+  }
 
-    setAccessToken(data.accessToken);
-    setStatus("authenticated");
-    return data.accessToken;
-  }, []);
+  setAccessToken(data.accessToken);
+  setStatus("authenticated");
+  setUserInfo(data.userInfo ?? null);
+
+  // 🔥 여기! -> userInfo 자체를 리턴
+  return data.userInfo ?? null;
+}, []);
+
 
   const logout = useCallback(async () => {
     try {
@@ -73,6 +80,7 @@ export function AuthProvider({ children }) {
     } finally {
       setAccessToken(null);
       setStatus("unauthenticated");
+      setUserInfo(null);
     }
   }, []);
 
@@ -100,12 +108,13 @@ export function AuthProvider({ children }) {
       status,
       isAuthenticated: status === "authenticated",
       isLoading: status === "loading",
+      userInfo, // userInfo 추가
       login,
       logout,
       refresh: refreshAccessToken,
       fetchWithAuth,
     };
-  }, [accessToken, status, login, logout, refreshAccessToken, fetchWithAuth]);
+  }, [accessToken, status, userInfo, login, logout, refreshAccessToken, fetchWithAuth]);
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

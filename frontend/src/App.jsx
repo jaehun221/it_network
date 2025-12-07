@@ -10,7 +10,7 @@ import Projects from "./pages/Projects";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Profile from "./pages/profile";
-import Apply from "./pages/Apply";
+import Recruit from "./pages/Recruit";
 
 // 헤더
 import Header from "./include/Header";
@@ -42,7 +42,7 @@ function Layout() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/projects" element={<Projects />} />
-        <Route path="/apply" element={<Apply />} />
+        <Route path="/recruit" element={<Recruit />} />
 
         {/* 게시판 페이지 */}
         <Route path="/board" element={<Board_Home />} />

@@ -6,7 +6,7 @@ export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
-    const { login } = useAuth();
+    const { login, userInfo } = useAuth();
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
@@ -20,7 +20,7 @@ export default function Login() {
         try {
             setLoading(true);
             await login(email, password);
-            alert("로그인 성공");
+            alert(`로그인 성공\n환영합니다. ${userInfo?.user_nm ?? ""}님`);
             navigate("/board", { replace: true });
         } catch (err) {
             console.error(err);

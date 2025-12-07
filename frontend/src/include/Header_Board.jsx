@@ -8,7 +8,7 @@ export default function Header_Board() {
   const handleLogout = async () => {
     try {
       await logout();
-      navigate("/"); // 로그아웃 후 홈으로 이동
+      navigate("/board"); // 로그아웃 후 홈으로 이동
     } catch (e) {
       // 간단히 무시하거나 필요시 오류 처리
       console.error(e);
