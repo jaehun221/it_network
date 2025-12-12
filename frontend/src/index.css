@@ -1,0 +1,15 @@
+:root {
+  background-color: #141417;
+  overflow-y: scroll;
+  color: #fff;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}

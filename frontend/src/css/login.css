@@ -1,0 +1,121 @@
+.login-page {
+	min-height: 90vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 1rem;
+}
+
+.login-card {
+	width: 95%;
+    max-width: 900px;
+	/* max-width: 1300px; */
+	height: 60vh;
+	background: rgba(255, 255, 255, 0.08);
+	border: 1px solid rgba(255, 255, 255, 0.15);
+	border-radius: 16px;
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+	backdrop-filter: blur(10px);
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	overflow: hidden;
+}
+
+.login-asset {
+	background: rgba(255, 255, 255, 0.03);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.login-form-section {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 2rem 3rem;
+}
+
+.login-form-section h2 {
+	margin-bottom: 1.5rem;
+	position: relative;
+	top: -30px;
+	text-align: center;
+	font-size: 1.8rem;
+	letter-spacing: 0.06em;
+	color: #fff;
+}
+
+.login-form-section form {
+	width: 100%;
+	max-width: 380px;
+	margin: 0 auto;
+}
+
+.form-group {
+	margin-bottom: 1.2rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.form-group label {
+	font-size: 0.95rem;
+	color: rgba(255, 255, 255, 0.85);
+	font-weight: 500;
+	text-align: left;
+}
+
+.form-group input {
+	border: 1px solid rgba(255, 255, 255, 0.25);
+	border-radius: 10px;
+	padding: 0.9rem 1rem;
+	background: rgba(255, 255, 255, 0.05);
+	color: #fff;
+	font-size: 1rem;
+	transition: all 0.2s ease;
+}
+
+.form-group input::placeholder {
+	color: rgba(255, 255, 255, 0.5);
+}
+
+.form-group input:focus {
+	outline: none;
+	border-color: rgba(255, 255, 255, 0.5);
+	background: rgba(255, 255, 255, 0.08);
+	box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
+}
+
+.form-actions {
+	margin-top: 1.8rem;
+	text-align: center;
+}
+
+.form-actions button {
+	width: 100%;
+	padding: 1rem;
+	border: none;
+	border-radius: 10px;
+	/* background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); */
+    background-color: #6421ac;
+	color: #fff;
+	font-size: 1rem;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.form-actions button:disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+}
+
+.form-actions button:not(:disabled):hover {
+	transform: translateY(-2px);
+	box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.form-actions button:not(:disabled):active {
+	transform: translateY(0);
+}
