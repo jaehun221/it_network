@@ -7,7 +7,7 @@ import NotFound from "./pages/NotFound";
 import Board_Home from "./pages/Board_Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import Profile from "./pages/profile";
+import Profile from "./pages/Profile";
 
 // 헤더
 import Header from "./include/Header";
