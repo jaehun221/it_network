@@ -9,17 +9,19 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Profile from "./pages/Profile";
 
-// 헤더
+// 헤더 푸터
 import Header from "./include/Header";
 import Header_Board from "./include/Header_Board";
+import Footer from "./include/Footer";
 
 // CSS
 import './App.css'
 
 function App() {
   return (
-    <Router>
+    <Router >
       <Layout />
+      <Footer />
     </Router>
   );
 }

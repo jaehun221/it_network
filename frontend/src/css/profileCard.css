@@ -1,0 +1,105 @@
+/* ===== Card 기본 스타일 ===== */
+.profile-card {
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto;
+  background-color: #333;
+  color: #fff;
+  padding: 24px 20px 20px;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  font-family: "Noto Sans KR", sans-serif;
+  text-align: center;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ===== 이미지 ===== */
+.profile-image-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 0;
+}
+
+.profile-image {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 5px solid #fff;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+  max-width: 180px;
+  flex-shrink: 0;
+}
+
+/* ===== 텍스트 ===== */
+.profile-text {
+  margin-top: 12px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.profile-title {
+  font-size: 14px;
+  color: #ccc;
+  margin: 0;
+  word-break: keep-all;
+}
+
+.profile-name {
+  font-size: 26px;
+  font-weight: bold;
+  margin: 0;
+  word-break: keep-all;
+}
+
+.profile-affiliations {
+  font-size: 14px;
+  color: #bbb;
+  margin-top: 6px;
+  word-break: keep-all;
+}
+
+.affiliation-icon {
+  width: 18px;
+  height: 18px;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+/* ===== 소개 문구 ===== */
+.profile-tagline {
+  background-color: #222;
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 14px;
+  font-size: 14px;
+  /* width: 70%; */
+  line-height: 1.5;
+  word-break: keep-all;
+}
+
+/* ===== 아이콘 스타일 ===== */
+.profile-icons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 14px;
+}
+
+.profile-icons a {
+  font-size: 20px;
+  color: #ccc;
+  transition: 0.2s;
+}
+
+.profile-icons a:hover {
+  color: #fff;
+  transform: scale(1.15);
+}

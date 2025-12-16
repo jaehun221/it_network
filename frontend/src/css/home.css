@@ -54,7 +54,8 @@ section {
   padding: 60px 20px;
   max-width: 1000px;
   margin: auto;
-  height: 1200px;
+  text-align: center;
+  line-height: 3rem;
 }
 
 .project-list {
@@ -68,4 +69,31 @@ section {
   flex: 1;
   padding: 30px;
   border-radius: 10px;
+}
+
+
+/* Team Section - Profile Grid */
+.member .profile-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(3, 1fr);             /* 최대 3개 */
+  width: 100%;
+  max-width: calc(3 * 360px + 2 * 24px);             /* 카드 최대폭(360px) 기준으로 3열 캡 */
+  margin: 0 auto;                                    /* 가운데 정렬 */
+}
+
+/* 2열 */
+@media (max-width: 1024px) {
+  .member .profile-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: calc(2 * 360px + 1 * 24px);
+  }
+}
+
+/* 1열 */
+@media (max-width: 640px) {
+  .member .profile-grid {
+    grid-template-columns: 1fr;
+    max-width: 360px;
+  }
 }

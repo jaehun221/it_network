@@ -13,6 +13,8 @@ body {
     sans-serif;
 }
 
+
+
 /* ================================
    HEADER 기본 스타일
 ================================ */
@@ -146,6 +148,10 @@ body {
   #header nav a {
     font-size: 16px;
   }
+
+  .header_board-spacer {
+    height: 70px;
+  }
 }
 
 /* 🔹 모바일 (768px 이하) */
@@ -172,5 +178,105 @@ body {
 
   #header nav a {
     font-size: 14px;
+  }
+
+  .header_board-spacer {
+    height: 110px;
+  }
+}
+
+#header.header_board {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1100;
+}
+
+.header_board-spacer {
+  height: 80px;
+}
+
+/* ================================
+   푸터 기본 스타일
+================================ */
+#footer {
+  background: #0f0f12;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 28px 16px;
+  color: #e8e8ea;
+  margin: auto;
+}
+
+#footer .footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  row-gap: 20px;
+  text-align: center;
+}
+
+#footer .footer-logo {
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 800;
+  color: #fff;
+}
+
+#footer .footer-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.6;
+}
+
+#footer .footer-email,
+#footer .footer-copy {
+  margin: 6px 0 0;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+#footer .footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#footer .footer-sns {
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+}
+
+#footer .footer-sns a {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+#footer .footer-links a,
+#footer .footer-sns a {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+#footer .footer-links a:hover,
+#footer .footer-sns a:hover {
+  color: #fff;
+}
+
+/* 반응형 푸터 스타일 */
+@media (max-width: 768px) {
+  #footer .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }

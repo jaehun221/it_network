@@ -16,47 +16,50 @@ export default function Header_Board() {
   };
 
   return (
-    <header id="header" className="solid">
-      <div className="header-inner">
-        <h1>
-          <Link to="/board">IT Network - Board</Link>
-        </h1>
-        <nav>
-          <ul>
-            <li><Link to="/">홈</Link></li>
-            <li><Link to="/board/">빈</Link></li>
+    <>
+      <header id="header" className="solid header_board">
+        <div className="header-inner">
+          <h1>
+            <Link to="/board">IT Network - Board</Link>
+          </h1>
+          <nav>
+            <ul>
+              <li><Link to="/">홈</Link></li>
+              <li><Link to="/board/">빈</Link></li>
 
-            {/* 인증 상태에 따라 메뉴 분기 */}
-            {!isAuthenticated ? (
-              <>
-                <li><Link to="/board/signup">회원가입</Link></li>
-                <li><Link to="/board/login">로그인</Link></li>
-              </>
-            ) : (
-              <>
-                <li><Link to="/board/profile">마이페이지</Link></li>
-                <li>
-                  <button
-                    onClick={handleLogout}
-                    style={{
-                      background: "none",
-                      border: "none",
-                      padding: 0,
-                      fontWeight: "bold",
-                      fontSize: "18px",
-                      cursor: "pointer",
-                      color: "inherit",
-                    }}
-                    aria-label="로그아웃"
-                  >
-                    로그아웃
-                  </button>
-                </li>
-              </>
-            )}
-          </ul>
-        </nav>
-      </div>
-    </header>
+              {/* 인증 상태에 따라 메뉴 분기 */}
+              {!isAuthenticated ? (
+                <>
+                  <li><Link to="/board/signup">회원가입</Link></li>
+                  <li><Link to="/board/login">로그인</Link></li>
+                </>
+              ) : (
+                <>
+                  <li><Link to="/board/profile">마이페이지</Link></li>
+                  <li>
+                    <button
+                      onClick={handleLogout}
+                      style={{
+                        background: "none",
+                        border: "none",
+                        padding: 0,
+                        fontWeight: "bold",
+                        fontSize: "18px",
+                        cursor: "pointer",
+                        color: "inherit",
+                      }}
+                      aria-label="로그아웃"
+                    >
+                      로그아웃
+                    </button>
+                  </li>
+                </>
+              )}
+            </ul>
+          </nav>
+        </div>
+      </header>
+      <div className="header_board-spacer" aria-hidden="true" />
+    </>
   );
 }

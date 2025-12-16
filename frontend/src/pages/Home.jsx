@@ -1,6 +1,7 @@
 import "../css/home.css";
 import { useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import ProfileCard from "../include/ProfileCard";
 
 export default function Home() {
   const location = useLocation();
@@ -30,12 +31,11 @@ export default function Home() {
       <section id="hero" className="hero">
         <h1 className='title'><span>IMAGINE. </span><span>CREATE. </span><span>ACHIEVE. </span></h1>
         
-        {/* <button className="cta">가입하기</button> */}
       </section>
 
       {/* About Section */}
       <section id="about" className="about">
-        <h2>동아리 소개</h2>
+        <h1 style={{textAlign:"center", fontSize:"3rem"}}>Welcome!</h1>
         <p>
           IT Network는 개발, 보안, 네트워크, 디자인 등 다양한 분야에 관심 있는 학생들이 모여
           프로젝트를 하고 지식을 공유하는 동아리입니다.
@@ -57,6 +57,76 @@ export default function Home() {
         <h2>게시판 운영</h2>
         <p>게시판을 운영하고 있습니다. ㄱㄱㄱ</p>
         <Link to="/board">이동</Link>
+      </section>
+
+      {/* Member Section */}
+      <section id="member" className="member">
+        <h2 style={{ marginBottom: "15px" }}>현재 부원</h2>
+        <div className="profile-grid">
+          <ProfileCard 
+            imageUrl="https://github.com/kornet79.png"
+            name="김규민"
+            title="단장"
+            affiliations={"진인프라"}
+            tagline="단장입니다"
+            github={"https://github.com/kornet79/kornet79"}
+          />
+
+          <ProfileCard 
+            imageUrl="https://github.com/dbsrjs.png"
+            name="김민후"
+            title="부단장"
+            affiliations={"IIST"}
+            tagline="부단장입니다"
+            github={"https://github.com/kornet79/kornet79"}
+          />
+
+          <ProfileCard 
+            imageUrl="https://github.com/jaehun221.png"
+            name="이재훈"
+            title="부원"
+            affiliations={"FuriosaAI"}
+            tagline="부원입니다"
+            github={"https://github.com/jaehun221"}
+          />
+
+          <ProfileCard 
+            imageUrl="https://github.com/gaengji.png"
+            name="강지원"
+            title="부원"
+            affiliations={"백수"}
+            tagline="부원입니다"
+            github={"https://github.com/gaengji"}
+          />
+
+          <ProfileCard 
+            imageUrl="https://github.com/kimyangmin.png"
+            name="박영민"
+            title="부원"
+            affiliations={"킹스정보통신"}
+            tagline="import { useRef, useEffect, useCallback, useMemo } from 'react'; import { gsap } from 'gsap'; import { InertiaPlugin } from 'gsap/InertiaPlugin';"
+            github={"https://github.com/kimyangmin"}
+          />
+
+          <ProfileCard 
+            imageUrl="https://github.com/kkob728.png"
+            name="김서준"
+            title="부원"
+            affiliations={"비도제"}
+            tagline="부원입니다"
+            github={"https://github.com/kkob728"}
+          />
+
+          <ProfileCard 
+            imageUrl="https://github.com/guthib.png"
+            name="김태웅"
+            title="부원"
+            affiliations={"비도제"}
+            tagline="부원입니다"
+            github={"https://github.com/"}
+          />
+        </div>
+        
       </section>
 
       {/* Recruit Section */}
