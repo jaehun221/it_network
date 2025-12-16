@@ -8,6 +8,7 @@ import Board_Home from "./pages/Board_Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Profile from "./pages/Profile";
+import BoardDetailPage from "./pages/Board_Detail";
 
 // 헤더 푸터
 import Header from "./include/Header";
@@ -41,6 +42,7 @@ function Layout() {
         <Route path="/" element={<Home />} />
 
         {/* 게시판 페이지 */}
+        <Route path="/board/:id" element={<BoardDetailPage />} />
         <Route path="/board" element={<Board_Home />} />
         <Route path="/board/login" element={<Login />} />
         <Route path="/board/signup" element={<Signup />} />

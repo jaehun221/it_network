@@ -1,53 +1,59 @@
-import '../css/board_home.css'
-import { useEffect, useState } from 'react';
+import "../css/board_page.css";
+import { useState } from "react";
+import BoardListSection from "../components/BoardListSection";
+import BoardCreateForm from "../components/BoardCreateForm";
+import { useAuth } from "../context/AuthContext";
 
 export default function Board_Home() {
-    const [items, setItems] = useState([]);
-    const [page, setPage] = useState(0);
-    const size = 10;
-    const [total, setTotal] = useState(0);
+  const { isAuthenticated, status } = useAuth();
+  const [showForm, setShowForm] = useState(false);
+  const [refreshSignal, setRefreshSignal] = useState(0);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const res = await fetch(`/api/boards?page=${page}&size=${size}`);
-            const data = await res.json();
-            setItems(data.items ?? []);
-            setTotal(data.total ?? 0);
-        };
-        fetchData();
-    }, [page]);
+  const handleNewBoard = () => {
+    setRefreshSignal((prev) => prev + 1);
+  };
 
-    const totalPages = Math.ceil(total / size);
+  const toggleForm = () => {
+    setShowForm((prev) => !prev);
+  };
 
-    return (
-        <>
-            <h1>최근 게시글</h1>
-            <ul>
-                {items.map((item) => (
-                    <li key={item.id}>
-                        <span className="board-id">#{item.id}</span>{' '}
-                        <span className="board-title">{item.title}</span>
-                    </li>
-                ))}
-                {items.length === 0 && <li>게시글이 없습니다.</li>}
-            </ul>
-            <div className="pagination">
-                <button
-                    onClick={() => setPage((p) => Math.max(0, p - 1))}
-                    disabled={page === 0}
-                >
-                    이전
-                </button>
-                <span>
-                    {page + 1} / {Math.max(1, totalPages)}
-                </span>
-                <button
-                    onClick={() => setPage((p) => (p + 1 < totalPages ? p + 1 : p))}
-                    disabled={page + 1 >= totalPages}
-                >
-                    다음
-                </button>
-            </div>
-        </>
-    )
+  const disableFormButton = !isAuthenticated && status !== "loading";
+
+  return (
+    <main className="board-page">
+      <div className="board-page-header">
+        <h1>자유게시판</h1>
+        <p>자유롭게 이야기를 나누는 공간입니다. 댓글로 활발하게 소통해 보세요.</p>
+      </div>
+
+      <div className="board-create-bar">
+        <button
+          className="board-create-trigger"
+          onClick={toggleForm}
+          disabled={disableFormButton}
+        >
+          {showForm ? "작성 취소" : "새 게시글 작성"}
+        </button>
+        {!isAuthenticated && status !== "loading" && (
+          <p className="board-create-note">로그인해야 글을 작성할 수 있습니다.</p>
+        )}
+      </div>
+
+      {showForm && isAuthenticated && (
+        <BoardCreateForm
+          onSuccess={() => {
+            handleNewBoard();
+            setShowForm(false);
+          }}
+          onCancel={() => setShowForm(false)}
+        />
+      )}
+
+      <BoardListSection
+        title="최근 게시글"
+        description="최신 10개 글을 최신순으로 보여줍니다. 더 많은 글은 다음 페이지에서 확인하세요."
+        refreshSignal={refreshSignal}
+      />
+    </main>
+  );
 }

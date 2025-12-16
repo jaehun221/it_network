@@ -1,7 +1,9 @@
 import "../css/home.css";
+import "../css/board_page.css";
 import { useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import ProfileCard from "../include/ProfileCard";
+import BoardListSection from "../components/BoardListSection";
 
 export default function Home() {
   const location = useLocation();
@@ -53,21 +55,33 @@ export default function Home() {
       </section>
 
       {/* Board Section */}
-      <section id="board" className="board">
-        <h2>게시판 운영</h2>
-        <p>게시판을 운영하고 있습니다. ㄱㄱㄱ</p>
-        <Link to="/board">이동</Link>
+      <section id="board" className="board" style={{textAlign:"left"}}>
+        <div className="board-intro">
+          <h2>게시판 운영</h2>
+          <p>최근 게시글을 빠르게 확인하고, 더 많은 글은 다음 페이지에서 살펴보세요.</p>
+        </div>
+        <BoardListSection
+          title="최근 게시글"
+          className="home-board-list"
+          size={3}
+          hidePagination
+        />
+        <div className="board-cta">
+          <Link className="board-link" to="/board">
+            전체 게시판 보기
+          </Link>
+        </div>
       </section>
 
       {/* Member Section */}
       <section id="member" className="member">
-        <h2 style={{ marginBottom: "15px" }}>현재 부원</h2>
+        <h1 style={{ marginBottom: "15px" }}>현재 부원</h1>
         <div className="profile-grid">
           <ProfileCard 
             imageUrl="https://github.com/kornet79.png"
             name="김규민"
             title="단장"
-            affiliations={"진인프라"}
+            affiliations={"JIN INFRA"}
             tagline="단장입니다"
             github={"https://github.com/kornet79/kornet79"}
           />
@@ -104,7 +118,7 @@ export default function Home() {
             name="박영민"
             title="부원"
             affiliations={"킹스정보통신"}
-            tagline="import { useRef, useEffect, useCallback, useMemo } from 'react'; import { gsap } from 'gsap'; import { InertiaPlugin } from 'gsap/InertiaPlugin';"
+            tagline="Content-Type: application/json"
             github={"https://github.com/kimyangmin"}
           />
 
@@ -123,7 +137,7 @@ export default function Home() {
             title="부원"
             affiliations={"비도제"}
             tagline="부원입니다"
-            github={"https://github.com/"}
+            github={"https://github.com/guthib"}
           />
         </div>
         

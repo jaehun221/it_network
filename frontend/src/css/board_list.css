@@ -1,0 +1,185 @@
+.board-list-widget {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: #fff;
+}
+
+.board-list-heading h3 {
+  margin: 0 0 8px;
+  font-size: 1.2rem;
+}
+
+.board-list-heading p {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.board-error {
+  color: #ff7676;
+  font-size: 0.9rem;
+}
+
+.board-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.board-list li {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid transparent;
+  border-radius: 10px;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.board-list li:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.board-item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 8px;
+  align-items: center;
+  padding: 12px 16px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.board-item-id {
+  font-weight: 600;
+  opacity: 0.6;
+  font-size: 0.9rem;
+}
+
+.board-item-title {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.board-item-date {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.board-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 12px;
+  font-size: 0.95rem;
+}
+
+.board-pagination button {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: inherit;
+  padding: 6px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.board-pagination button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.board-pagination button:not(:disabled):hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.board-create-form {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.board-create-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.board-create-field label {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+.board-create-field input,
+.board-create-field textarea {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 8px 10px;
+  color: inherit;
+  font-size: 0.95rem;
+}
+
+.board-create-field input:focus,
+.board-create-field textarea:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.board-create-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.board-create-actions button {
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.08);
+  color: inherit;
+  padding: 6px 18px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.board-create-actions button:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.board-create-actions .board-create-cancel {
+  background: transparent;
+}
+
+.board-create-error {
+  margin: 0;
+  color: #ffb4b4;
+  font-size: 0.85rem;
+}
+
+.board-empty {
+  padding: 12px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+@media (max-width: 768px) {
+  .board-item {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  .board-item-date {
+    justify-self: flex-start;
+  }
+}
