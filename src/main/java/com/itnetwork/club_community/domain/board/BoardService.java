@@ -16,9 +16,18 @@ public class BoardService {
     }
 
     @Transactional // 저장 로직
-    public void save(BoardWriteRequest request) {
-        Board board = new Board(request.getTitle(), request.getContent());
-        boardRepository.save(board);
+    public Board save(BoardWriteRequest request) {
+        return createBoard(request.getTitle(), request.getContent());
+    }
+
+    @Transactional
+    public Board create(BoardCreateRequest request) {
+        return createBoard(request.getTitle(), request.getContent());
+    }
+
+    private Board createBoard(String title, String content) {
+        Board board = new Board(title, content);
+        return boardRepository.save(board);
     }
 
     public List<Board> findAll() { // 조회 로직
@@ -35,8 +44,13 @@ public class BoardService {
         return all.subList(from, to);
     }
 
+    public Board findById(Long id) {
+        return boardRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("게시글을 찾을 수 없습니다."));
+    }
+
     // 전체 게시글 수 반환
     public long count() {
-        return boardRepository.findAll().size();
+        return boardRepository.count();
     }
 }
