@@ -22,7 +22,7 @@ export default function BoardCreateForm({ onSuccess, onCancel }) {
 
     setSubmitting(true);
     try {
-      const response = await fetchWithAuth({API_BASE_URL} + "/boards", {
+      const response = await fetchWithAuth(`${API_BASE_URL}/boards`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
