@@ -9,6 +9,7 @@ const STORAGE_KEY_TOKEN = "accessToken";
 const STORAGE_KEY_USER = "userInfo";
 
 export function AuthProvider({ children }) {
+  console.log(API_BASE_URL);
   const [accessToken, setAccessToken] = useState(null);
   const [status, setStatus] = useState("loading");
   const [userInfo, setUserInfo] = useState(null);

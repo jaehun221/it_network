@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import "../css/board_list.css";
 
+const API_BASE_URL = import.meta.env.VITE_API_URL ?? "http://localhost:9999";
+
 export default function BoardCreateForm({ onSuccess, onCancel }) {
   const { fetchWithAuth } = useAuth();
   const [title, setTitle] = useState("");
@@ -20,7 +22,7 @@ export default function BoardCreateForm({ onSuccess, onCancel }) {
 
     setSubmitting(true);
     try {
-      const response = await fetchWithAuth("/api/boards", {
+      const response = await fetchWithAuth({API_BASE_URL} + "/api/boards", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
