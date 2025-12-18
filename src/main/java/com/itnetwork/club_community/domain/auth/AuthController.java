@@ -87,7 +87,7 @@ public class AuthController {
         ResponseCookie refreshCookie = ResponseCookie.from("refreshToken", refreshToken)
                 .httpOnly(true)
                 .secure(false)  // 개발 환경에서 HTTPS가 아니므로 secure는 false, 운영환경에서는 true로 변경
-                .path("/auth")
+                .path("/api/auth")
                 .maxAge(7 * 24 * 60 * 60)
                 .sameSite("Lax")
                 .build();
@@ -155,7 +155,7 @@ public class AuthController {
         ResponseCookie deleteCookie = ResponseCookie.from("refreshToken", "")
                 .httpOnly(true)
                 .secure(false)
-                .path("/auth")
+                .path("/api/auth")
                 .maxAge(0)
                 .sameSite("Lax")
                 .build();
