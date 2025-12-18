@@ -24,7 +24,7 @@ export default function BoardListSection({
     setLoading(true);
     setError("");
 
-    fetch(buildApiUrl(`/api/boards?page=${page}&size=${size}`))
+    fetch(buildApiUrl(`/boards?page=${page}&size=${size}`))
       .then((res) => {
         if (!res.ok) {
           throw new Error("게시글 목록을 불러오는 데 실패했습니다.");

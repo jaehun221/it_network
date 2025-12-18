@@ -23,8 +23,21 @@ import java.io.IOException;
  * 이 필터가 토큰을 검증하고 인증 정보를 설정합니다.
  * 토큰이 만료되었으면 "Refresh-Token" 헤더를 확인하여 자동으로 갱신합니다.
  */
+
+// JwtAuthFilter.java 파일 내
+
 @Slf4j
 public class JwtAuthFilter extends OncePerRequestFilter {
+    
+    // JwtAuthFilter.java 파일 내부
+
+    @Override
+    protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
+        String path = request.getRequestURI();
+        // "/auth/" 또는 "/api/auth/"로 시작하는 경로는 필터 검사를 건너뜀
+        return path.startsWith("/auth/") || path.startsWith("/api/auth/");
+    }
+
     // JWT 토큰을 생성하고 검증하는 Provider
     private final JwtTokenProvider jwtTokenProvider;
     // 리프레시 토큰을 처리하는 Provider
@@ -154,17 +167,5 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         filterChain.doFilter(request, response);
 
     }
-
-    @Override
-protected boolean shouldNotFilter(HttpServletRequest request) {
-    String path = request.getServletPath();
-    String method = request.getMethod();
-
-    if ("OPTIONS".equalsIgnoreCase(method)) return true;
-    if (path.startsWith("/api/auth/")) return true;
-    if (path.equals("/api/health")) return true;
-
-    return false;
-}
 
 }
