@@ -20,7 +20,9 @@ export default function Header_Board() {
       <header id="header" className="solid header_board">
         <div className="header-inner">
           <h1>
-            <Link to="/board">IT Network - Board</Link>
+            <Link to="/board">
+              <img src="/logo.png" alt="IT Network logo" className="header-logo" />
+            </Link>
           </h1>
           <nav>
             <ul>

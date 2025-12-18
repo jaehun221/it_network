@@ -31,7 +31,7 @@ import java.util.Optional;
  * 이 컨트롤러가 인증을 처리하고 JWT 토큰을 발급합니다.
  */
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/api/auth")
 @RequiredArgsConstructor
 public class AuthController {
     // 사용자 정보를 관리하는 서비스

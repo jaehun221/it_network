@@ -1,5 +1,6 @@
 // 라이브러리
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 // 페이지
 import Home from "./pages/Home";
@@ -21,10 +22,21 @@ import './App.css'
 function App() {
   return (
     <Router >
+      <ScrollToTop />
       <Layout />
       <Footer />
     </Router>
   );
+}
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
 }
 
 function Layout() {
