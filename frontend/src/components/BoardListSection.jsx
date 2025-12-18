@@ -90,7 +90,7 @@ export default function BoardListSection({
         )}
         {items.map((item) => (
           <li key={item.id}>
-            <Link className="board-item" to={`/board/${item.id}`}>
+            <Link className="board-item" to={`/api/board/${item.id}`}>
               <span className="board-item-id">#{item.id}</span>
               <span className="board-item-title">{item.title}</span>
               <span className="board-item-date">
