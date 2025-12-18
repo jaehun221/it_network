@@ -22,7 +22,7 @@ export default function Board_Home() {
   return (
     <main className="board-page">
       <div className="board-page-header">
-        <h1>자유게시판</h1>
+        <h1>자유게시판 - Beta</h1>
         <p>자유롭게 이야기를 나누는 공간입니다. 댓글로 활발하게 소통해 보세요.</p>
       </div>
 

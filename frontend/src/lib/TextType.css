@@ -1,0 +1,14 @@
+.texttype {
+  display: inline-flex;
+  align-items: baseline;
+}
+
+.texttype__cursor {
+  margin-left: 6px;
+  animation: texttype-blink 1s step-end infinite;
+  opacity: 0.9;
+}
+
+@keyframes texttype-blink {
+  50% { opacity: 0; }
+}

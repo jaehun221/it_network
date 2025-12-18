@@ -1,7 +1,13 @@
 import { useAuth } from "../context/AuthContext";
+import { useMemo } from "react";
 
 export default function Profile() {
-    const { isAuthenticated, userInfo, isLoading } = useAuth();
+    const { isAuthenticated, isLoading } = useAuth();
+    
+    const userInfo = useMemo(() => {
+        const saved = localStorage.getItem("userInfo");
+        return saved ? JSON.parse(saved) : null;
+    }, []);
 
     if (isLoading) {
         return <h2>로딩 중...</h2>;

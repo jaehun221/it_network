@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import "../css/signup.css";
 
 export default function Signup() {
     const [userId, setUserId] = useState("");
@@ -6,6 +8,7 @@ export default function Signup() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -38,6 +41,7 @@ export default function Signup() {
 
             // 성공 처리
             alert("회원가입 성공");
+            navigate("/board", { replace: true });
             // 폼 초기화
             setUserId("");
             setPassword("");
@@ -52,55 +56,64 @@ export default function Signup() {
     };
 
     return (
-        <>
-            <h2>회원가입</h2>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label>아이디 (user_id)</label>
-                    <br />
-                    <input
-                        type="text"
-                        value={userId}
-                        onChange={(e) => setUserId(e.target.value)}
-                        required
-                    />
+        <div className="signup-page">
+            <div className="signup-card">
+                <div className="signup-asset">
+                    {/* 에셋 들어갈 영역 */}
                 </div>
-                <div>
-                    <label>이메일 (email)</label>
-                    <br />
-                    <input
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                    />
+                <div className="signup-form-section">
+                    <h2>회원가입</h2>
+                    <p className="signup-form-subtitle">
+                        계정을 생성하여 게시글을 작성해보세요.
+                    </p>
+                    <form onSubmit={handleSubmit}>
+                        <div className="form-group">
+                            <label>아이디</label>
+                            <input
+                                type="text"
+                                value={userId}
+                                onChange={(e) => setUserId(e.target.value)}
+                                required
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label>이메일</label>
+                            <input
+                                type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                required
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label>이름</label>
+                            <input
+                                type="text"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                                required
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label>비밀번호</label>
+                            <input
+                                type="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                required
+                            />
+                        </div>
+                        <div className="form-actions">
+                            <button type="submit" disabled={loading}>
+                                {loading ? "가입중..." : "회원가입"}
+                            </button>
+                        </div>
+                    </form>
+                    <div className="signup-form-footnote">
+                        이미 계정이 있다면 <Link to="/board/login">로그인</Link>하세요.
+                    </div>
                 </div>
-                <div>
-                    <label>이름 (user_nm)</label>
-                    <br />
-                    <input
-                        type="text"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        required
-                    />
-                </div>
-                <div>
-                    <label>비밀번호 (user_pw)</label>
-                    <br />
-                    <input
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                    />
-                </div>
-                <div style={{ marginTop: 10 }}>
-                    <button type="submit" disabled={loading}>
-                        {loading ? "가입중..." : "회원가입"}
-                    </button>
-                </div>
-            </form>
-        </>
+            </div>
+        </div>
     );
 }

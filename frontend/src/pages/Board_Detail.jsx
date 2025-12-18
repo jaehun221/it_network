@@ -27,7 +27,7 @@ export default function BoardDetailPage() {
     setBoardError("");
     setLoadingBoard(true);
 
-    fetch(buildApiUrl(`/api/boards/${id}`), { signal: controller.signal })
+    fetchWithAuth(buildApiUrl(`/api/boards/${id}`), { signal: controller.signal })
       .then((res) => {
         if (!res.ok) {
           throw new Error("게시글을 찾을 수 없습니다.");
@@ -43,14 +43,14 @@ export default function BoardDetailPage() {
       .finally(() => setLoadingBoard(false));
 
     return () => controller.abort();
-  }, [id]);
+  }, [id, fetchWithAuth]);
 
   useEffect(() => {
     const controller = new AbortController();
     setCommentsError("");
     setLoadingComments(true);
 
-    fetch(buildApiUrl(`/api/comments?postId=${id}`), { signal: controller.signal })
+    fetchWithAuth(buildApiUrl(`/api/comments?postId=${id}`), { signal: controller.signal })
       .then((res) => {
         if (!res.ok) {
           throw new Error("댓글을 불러오는 중 오류가 발생했습니다.");
@@ -66,7 +66,7 @@ export default function BoardDetailPage() {
       .finally(() => setLoadingComments(false));
 
     return () => controller.abort();
-  }, [id]);
+  }, [id, fetchWithAuth]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -79,7 +79,7 @@ export default function BoardDetailPage() {
     setSubmitting(true);
 
     try {
-      const res = await fetchWithAuth("/api/comments", {
+      const res = await fetchWithAuth(buildApiUrl(`/api/comments`), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -93,8 +93,8 @@ export default function BoardDetailPage() {
       }
 
       setCommentContent("");
-      // 댓글 목록을 갱신
-      const refresh = await fetch(buildApiUrl(`/api/comments?postId=${id}`));
+      // 댓글 목록을 갱신 (인증 헤더 포함)
+      const refresh = await fetchWithAuth(buildApiUrl(`/api/comments?postId=${id}`));
       if (!refresh.ok) {
         throw new Error("댓글을 다시 불러오는 데 실패했습니다.");
       }

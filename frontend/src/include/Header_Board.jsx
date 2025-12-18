@@ -24,8 +24,8 @@ export default function Header_Board() {
           </h1>
           <nav>
             <ul>
-              <li><Link to="/">홈</Link></li>
-              <li><Link to="/board/">빈</Link></li>
+              <li><Link to="/board">홈</Link></li>
+              <li><Link to="/">동아리</Link></li>
 
               {/* 인증 상태에 따라 메뉴 분기 */}
               {!isAuthenticated ? (
