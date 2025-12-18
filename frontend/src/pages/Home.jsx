@@ -5,16 +5,55 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import ProfileCard from "../include/ProfileCard";
 import BoardListSection from "../components/BoardListSection";
 import TextType from "../lib/TextType";
+import mhpi from '../assets/mhpi.png'
+import LogoLoop from "../lib/LogoLoop";
+import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss } from 'react-icons/si';
+
+const techLogos = [
+  { node: <SiReact />, title: "React", href: "https://react.dev" },
+  { node: <SiNextdotjs />, title: "Next.js", href: "https://nextjs.org" },
+  { node: <SiTypescript />, title: "TypeScript", href: "https://www.typescriptlang.org" },
+  { node: <SiTailwindcss />, title: "Tailwind CSS", href: "https://tailwindcss.com" },
+];
+
+const faqItems = [
+  {
+    question: "동아리 회원은 어떤 활동을 하나요?",
+    answer:
+      "매주 정기모임과 프로젝트 스프린트를 진행하며, Docker, Spring, AWS 같은 실무 기술을 직접 적용하는 경험을 나눕니다. 외부 해커톤과 스터디도 병행하여 실력을 이어갑니다.",
+  },
+  {
+    question: "지원할 때 준비물이 따로 있나요?",
+    answer:
+      "기본적으로 개발에 대한 관심과 간단한 자기소개만 있으면 되고, 제출물은 별도로 요구하지 않습니다. 단, 포트폴리오가 있다면 함께 첨부하면 더 좋습니다.",
+  },
+  {
+    question: "초보자도 함께할 수 있나요?",
+    answer:
+      "물론입니다. 기초부터 순차적으로 알려주는 멘토링과 실습 세션이 준비되어 있고, 기존 부원이 함께 페어 프로그래밍을 해줘서 더 빠르게 성장할 수 있어요.",
+  },
+  {
+    question: "모임은 어디에서 열리나요?",
+    answer:
+      "성일정보고등학교 내에서 진행되며, 프로젝트에 따라 온라인 협업(Discord, GitHub)을 병행합니다. 일정은 공지방을 통해 공유됩니다.",
+  },
+  {
+    question: "활동 기록이나 포트폴리오는 어떻게 관리하나요?",
+    answer:
+      "Notion과 GitHub Pages를 활용해 활동 로그를 정리하며, 중요한 프로젝트는 외부 발표로 공유합니다. 원한다면 개인 포트폴리오 링크도 지원서에서 안내해주세요.",
+  },
+];
 
 export default function Home() {
   const location = useLocation();
   const navigate = useNavigate();
   const aboutRef = useRef(null);
   const [playTextType, setPlayTextType] = useState(false);
+  const [openFaq, setOpenFaq] = useState(null);
 
   // 모집 상태 변수와 연락처
   const recruit = true; // true로 변경하면 모집 중 문구가 표시됩니다.
-  const recruitPhone = '010-1234-5678';
+  const recruitPhone = '(+82) 010-4045-0498';
 
   useEffect(() => {
     const target = location.state && location.state.scrollTo;
@@ -81,11 +120,18 @@ export default function Home() {
 
       {/* Projects Section */}
       <section id="projects-section" className="projects">
-        <h2>주요 활동</h2>
-        <div className="project-list">
-          <div className="project-card">프로젝트 1</div>
-          <div className="project-card">프로젝트 2</div>
-          <div className="project-card">프로젝트 3</div>
+        <h2 className="title" style={{fontSize:"2.5rem", marginBottom:"2.5rem"}}>활용 기술</h2>
+        <div style={{width:"100%", height: '200px', position: 'relative', overflow: 'hidden'}}>
+          {/* Vertical loop with deceleration on hover */}
+          <LogoLoop
+            logos={techLogos}
+            speed={80}
+            direction="right"
+            logoHeight={40}
+            gap={40}
+            hoverSpeed={20}
+            // fadeOut
+          />
         </div>
       </section>
 
@@ -118,16 +164,16 @@ export default function Home() {
             title="단장"
             affiliations={"JIN INFRA"}
             tagline="단장입니다"
-            github={"https://github.com/kornet79/kornet79"}
+            github={"https://github.com/kornet79"}
           />
 
           <ProfileCard 
-            imageUrl="https://github.com/dbsrjs.png"
+            imageElement={ <img src={mhpi} alt="김민후" className="profile-image"/> }
             name="김민후"
             title="부단장"
             affiliations={"IIST"}
-            tagline="부단장입니다"
-            github={"https://github.com/kornet79/kornet79"}
+            tagline="트릭컬 리바이브 지금 당장 다운로드"
+            notion={"https://valuable-ankle-b82.notion.site/8831905b1a034d0cabdae96314127cd3"}
           />
 
           <ProfileCard 
@@ -135,8 +181,9 @@ export default function Home() {
             name="이재훈"
             title="부원"
             affiliations={"FuriosaAI"}
-            tagline="부원입니다"
+            tagline="여고생 입니다"
             github={"https://github.com/jaehun221"}
+            githubIo={"https://jaehun221.github.io/"}
           />
 
           <ProfileCard 
@@ -144,17 +191,18 @@ export default function Home() {
             name="강지원"
             title="부원"
             affiliations={"안승우 집"}
-            tagline="저는 3학년 11반 입니다."
+            tagline="너정말핵심을찔렀어"
             github={"https://github.com/gaengji"}
           />
 
           <ProfileCard 
             imageUrl="https://github.com/kimyangmin.png"
             name="박영민"
-            title="부원"
+            title="모집 담당"
             affiliations={"킹스정보통신"}
             tagline="Content-Type: application/json"
             github={"https://github.com/kimyangmin"}
+            notion={"https://rainy-jacket-3d3.notion.site/213d205f76688018b7e3ccdc7a8034ca?source=copy_link"}
           />
 
           <ProfileCard 
@@ -162,17 +210,17 @@ export default function Home() {
             name="김서준"
             title="부원"
             affiliations={"비도제"}
-            tagline="부원입니다"
+            tagline="롤할사람 구합니다"
             github={"https://github.com/kkob728"}
           />
 
           <ProfileCard 
-            imageUrl="https://github.com/guthib.png"
+            imageUrl="https://github.com/rokaing123.png"
             name="김태웅"
             title="부원"
             affiliations={"비도제"}
-            tagline="부원입니다"
-            github={"https://github.com/guthib"}
+            tagline="김태웅 입니다"
+            github={"https://github.com/rokaing123"}
           />
         </div>
         
@@ -180,7 +228,27 @@ export default function Home() {
 
       <section id="faq" className="faq">
         <h2>FAQ</h2>
-        
+        <div className="faq-list">
+          {faqItems.map((item, idx) => {
+            const isOpen = openFaq === idx;
+            return (
+              <article className={`faq-item ${isOpen ? "open" : ""}`} key={item.question}>
+                <button
+                  className="faq-question"
+                  type="button"
+                  aria-expanded={isOpen}
+                  onClick={() => setOpenFaq(isOpen ? null : idx)}
+                >
+                  <span>{item.question}</span>
+                  <span className="faq-arrow">{isOpen ? "−" : "+"}</span>
+                </button>
+                <div className={`faq-answer ${isOpen ? "open" : ""}`}>
+                  <p>{item.answer}</p>
+                </div>
+              </article>
+            );
+          })}
+        </div>
       </section>
 
       {/* Recruit Section */}
@@ -188,11 +256,40 @@ export default function Home() {
         <h2>신입 부원 모집</h2>
         {recruit ? (
           <>
-            <p>
-              현재 동아리 모집 중입니다! <br />
-              <span style={{fontSize:"2rem"}}>단장 김규민</span> {recruitPhone}로 연락하세요.
+            <p className="recruit-lead">
+              IT Network는 협업 중심의 실무형 커리큘럼과 동료 지원 문화를 기반으로 신입을 기다리고 있습니다.
+              관심있는 친구는 어느 수준이든 환영하며, 성실한 태도와 호기심만 챙겨오세요.
             </p>
-            {/* <button className="cta">지원하기</button> */}
+            <div className="recruit-columns">
+              <div className="recruit-card">
+                <h3>지원 자격</h3>
+                <ul>
+                  <li>개발 또는 인프라에 관심 있는 고등학생</li>
+                  <li>매주 정기 모임(일요일 8PM 예정)에 온라인 참여 가능한 분</li>
+                  <li>팀원과의 협업에서 책임감 있게 역할을 수행할 분</li>
+                </ul>
+              </div>
+              <div className="recruit-card">
+                <h3>활동 혜택</h3>
+                <ul>
+                  <li>ChatGPT Plus, Gemini AI Pro 계정 제공</li>
+                  <li>기술 멘토링, 코드 리뷰, 배포/운영 경험 공유 세션</li>
+                  <li>개인 학습을 위한 전공책·인프런 강의 지원</li>
+                </ul>
+              </div>
+            </div>
+            <div className="recruit-contact">
+              <p>
+                <strong>지원 방법</strong> : 아래 연락처로 간단한 자기소개(관심기술, 참여 목적)를 보내주세요.
+              </p>
+              <p className="recruit-phone">
+                <span><span style={{fontWeight:"lighter", fontSize:"15px", color:"#e2e2e2ff", paddingRight:"5px"}}>모집 담당</span> 박영민</span>
+                <span style={{color:"#e8e8e8ff"}}>{recruitPhone}</span>
+              </p>
+              <p>
+                온라인 제출을 원하시면 <a href="https://example.com/recruit-form" target="_blank" rel="noreferrer">지원서 링크</a>를 통해 보내도 됩니다.
+              </p>
+            </div>
           </>
         ) : (
           <p>지금은 모집 기간이 아닙니다. 다음 모집 공고를 기다려 주세요.</p>

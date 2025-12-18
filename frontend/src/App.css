@@ -74,6 +74,13 @@ body {
   opacity: 0.7;
 }
 
+#header .header-logo {
+  margin-left: 10vh;
+  height: 32px;
+  object-fit: contain;
+  display: block;
+}
+
 /* ================================
    상태별 스타일
 ================================ */
@@ -224,6 +231,11 @@ body {
   font-size: 18px;
   font-weight: 800;
   color: #fff;
+}
+
+#footer .footer-logo img {
+  height: 32px;
+  object-fit: contain;
 }
 
 #footer .footer-brand {

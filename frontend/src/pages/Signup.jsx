@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../css/signup.css";
 
+const API_BASE_URL = import.meta.env.VITE_API_URL ?? "http://localhost:9999";
+
 export default function Signup() {
     const [userId, setUserId] = useState("");
     const [password, setPassword] = useState("");
@@ -28,7 +30,7 @@ export default function Signup() {
 
         try {
             setLoading(true);
-            const res = await fetch("http://localhost:9999/auth/signup", {
+            const res = await fetch(`${API_BASE_URL}/auth/signup`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(payload),

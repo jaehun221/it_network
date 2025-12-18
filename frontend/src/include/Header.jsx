@@ -54,7 +54,9 @@ export default function Header() {
     <header id="header" className={headerClass}>
       <div className="header-inner">
         <h1>
-          <Link to="/">IT Network</Link>
+          <Link to="/">
+            <img src="/logo.png" alt="IT Network logo" className="header-logo" />
+          </Link>
         </h1>
         <nav>
           <ul>
