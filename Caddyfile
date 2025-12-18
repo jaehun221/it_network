@@ -1,0 +1,25 @@
+it-network.kr, www.it-network.kr {
+  encode gzip
+  
+  header {
+    X-Content-Type-Options nosniff
+    X-Frame-Options DENY
+    Referrer-Policy strict-origin-when-cross-origin
+  }
+
+  @www host www.it-network.kr
+  redir @www https://it-network.kr{uri} permanent	
+
+  handle /api {
+    reverse_proxy backend:9999
+  }
+
+  # /api, /api/, /api/xxx 전부 백엔드로
+  handle /api/* {
+    reverse_proxy backend:9999
+  }
+
+  handle {
+    reverse_proxy frontend:80
+  }
+}

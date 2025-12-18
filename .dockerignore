@@ -1,0 +1,18 @@
+# git
+.git
+.gitignore
+# IDE
+.idea
+.vscode
+# OS
+.DS_Store
+# Gradle / Java build outputs
+.gradle
+build
+out
+*.log
+# Frontend
+frontend/node_modules
+frontend/dist
+# Env files
+.env
