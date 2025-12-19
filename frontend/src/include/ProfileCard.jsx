@@ -1,9 +1,11 @@
 import React from "react";
 import { FaEnvelope, FaLinkedin, FaGithub, FaBuilding } from "react-icons/fa";
-import "../css/profileCard.css"
+import { SiNotion } from "react-icons/si"; // Notion 아이콘 추가
+import "../css/ProfileCard.css"
 
 export default function ProfileCard({
   imageUrl = "https://via.placeholder.com/180",
+  imageElement = null,
   name = "이름",
   title = "직책",
   affiliations = [],
@@ -11,6 +13,7 @@ export default function ProfileCard({
   email,
   linkedin,
   github,
+  notion,
 }) {
   const affiliationText = Array.isArray(affiliations) ? affiliations.join(", ") : affiliations;
 
@@ -19,7 +22,7 @@ export default function ProfileCard({
 
       {/* 이미지 */}
       <div className="profile-image-wrapper">
-        <img src={imageUrl} alt={name} className="profile-image" />
+        {imageElement ?? <img src={imageUrl} alt={name} className="profile-image" />}
       </div>
 
       {/* 이름 + 직책 */}
@@ -51,6 +54,11 @@ export default function ProfileCard({
         {github && (
           <a href={github} target="_blank" rel="noreferrer" aria-label="GitHub">
             <FaGithub />
+          </a>
+        )}
+        {notion && (
+          <a href={notion} target="_blank" rel="noreferrer" aria-label="Notion">
+            <SiNotion />
           </a>
         )}
       </div>
