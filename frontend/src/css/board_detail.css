@@ -116,6 +116,7 @@
   background: #333;
   margin: 0 -18px;
   height: 45px;
+  line-height: 45px;
   padding: 1px 18px;
   border-radius: 12px 12px 0 0;
 }
