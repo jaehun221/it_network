@@ -1,7 +1,7 @@
 /* @refresh reset */
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 
-const API_BASE_URL = import.meta.env.VITE_API_URL ?? "http://localhost:9999";
+const API_BASE_URL = import.meta.env.VITE_API_URL ?? "http://localhost:9999/api";
 
 const AuthContext = createContext(null);
 

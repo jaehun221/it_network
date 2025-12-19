@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import "../css/board_detail.css";
 
-const API_BASE_URL = import.meta.env.VITE_API_URL ?? "http://localhost:9999";
+const API_BASE_URL = import.meta.env.VITE_API_URL ?? "http://localhost:9999/api";
 const buildApiUrl = (path) => (path.startsWith("http") ? path : `${API_BASE_URL}${path}`);
 
 export default function BoardDetailPage() {
