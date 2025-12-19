@@ -14,21 +14,15 @@ services:
     restart: always
 
   backend:
-    build:
-      context: .
-      dockerfile: Dockerfile.backend
+    image: ghcr.io/jaehun221/it_network-backend:latest
     container_name: itnet-backend
     environment:
-      # 컨테이너 안에서는 localhost가 아니라 서비스 이름(db)로 접속
       SPRING_DATASOURCE_URL: jdbc:mariadb://db:3306/club_community
       SPRING_DATASOURCE_USERNAME: app
       SPRING_DATASOURCE_PASSWORD: apppass
-
-      # 너 프로젝트는 포트가 9999로 뜨니까 명시
       SERVER_PORT: "9999"
-
-      # (선택) jwt.secret을 운영에서 분리하고 싶으면 이렇게
       JWT_SECRET: yourSuperSecretKeyForJwtSigning1234567890
+      TZ: Asia/Seoul
     expose:
       - "9999"
     depends_on:
@@ -36,9 +30,7 @@ services:
     restart: always
 
   frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
+    image: ghcr.io/jaehun221/it_network-frontend:latest
     container_name: itnet-frontend
     expose:
       - "80"
@@ -63,3 +55,4 @@ volumes:
   mariadb_data:
   caddy_data:
   caddy_config:
+

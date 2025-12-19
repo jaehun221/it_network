@@ -65,7 +65,7 @@ export default function Header() {
             <li><button className="nav-link" onClick={() => handleNav("board")}>게시판</button></li>
             <li><button className="nav-link" onClick={() => handleNav("member")}>멤버</button></li>
             <li><button className="nav-link" onClick={() => handleNav("faq")}>FAQ</button></li>
-            <li><button className="nav-link" onClick={() => handleNav("recruit")}>지원</button></li>
+            <li><button className="nav-link" onClick={() => handleNav("recruit")}>강지원</button></li>
           </ul>
         </nav>
       </div>
