@@ -2,10 +2,14 @@ it-network.kr, www.it-network.kr {
   encode gzip
   
   header {
-    X-Content-Type-Options nosniff
-    X-Frame-Options DENY
-    Referrer-Policy strict-origin-when-cross-origin
+    Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+    X-Content-Type-Options "nosniff"
+    X-Frame-Options "DENY"
+    X-XSS-Protection "0"
+    Referrer-Policy "strict-origin-when-cross-origin"
+    Permissions-Policy "geolocation=(), microphone=(), camera=()"
   }
+
 
   @www host www.it-network.kr
   redir @www https://it-network.kr{uri} permanent	
