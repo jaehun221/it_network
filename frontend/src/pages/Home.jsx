@@ -7,13 +7,13 @@ import BoardListSection from "../components/BoardListSection";
 import TextType from "../lib/TextType";
 import mhpi from '../assets/mhpi.png'
 import LogoLoop from "../lib/LogoLoop";
-import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss } from 'react-icons/si';
+import { SiReact, SiDocker, SiSpringboot, SiGit } from 'react-icons/si';
 
 const techLogos = [
+  { node: <SiDocker />, title: "Docker", href: "https://www.docker.com" },
+  { node: <SiSpringboot />, title: "Spring Boot", href: "https://spring.io/projects/spring-boot" },
   { node: <SiReact />, title: "React", href: "https://react.dev" },
-  { node: <SiNextdotjs />, title: "Next.js", href: "https://nextjs.org" },
-  { node: <SiTypescript />, title: "TypeScript", href: "https://www.typescriptlang.org" },
-  { node: <SiTailwindcss />, title: "Tailwind CSS", href: "https://tailwindcss.com" },
+  { node: <SiGit />, title: "Git", href: "https://git-scm.com" },
 ];
 
 const faqItems = [
@@ -190,7 +190,7 @@ export default function Home() {
             imageUrl="https://github.com/gaengji.png"
             name="강지원"
             title="부원"
-            affiliations={"안승우 집"}
+            affiliations={"대양CIS"}
             tagline="너정말핵심을찔렀어"
             github={"https://github.com/gaengji"}
           />
@@ -200,7 +200,7 @@ export default function Home() {
             name="박영민"
             title="모집 담당"
             affiliations={"킹스정보통신"}
-            tagline="Content-Type: application/json"
+            tagline="동아리 지원 많이 해주세요"
             github={"https://github.com/kimyangmin"}
             notion={"https://rainy-jacket-3d3.notion.site/213d205f76688018b7e3ccdc7a8034ca?source=copy_link"}
           />
@@ -264,8 +264,8 @@ export default function Home() {
               <div className="recruit-card">
                 <h3>지원 자격</h3>
                 <ul>
-                  <li>개발 또는 인프라에 관심 있는 고등학생</li>
-                  <li>매주 정기 모임(일요일 8PM 예정)에 온라인 참여 가능한 분</li>
+                  <li>개발 또는 인프라에 관심 있는 성일정보고등학교 재학생</li>
+                  <li>매주 정기 모임(일요일 오후 8시 예정)에 온라인 참여 가능한 분</li>
                   <li>팀원과의 협업에서 책임감 있게 역할을 수행할 분</li>
                 </ul>
               </div>
@@ -286,9 +286,9 @@ export default function Home() {
                 <span><span style={{fontWeight:"lighter", fontSize:"15px", color:"#e2e2e2ff", paddingRight:"5px"}}>모집 담당</span> 박영민</span>
                 <span style={{color:"#e8e8e8ff"}}>{recruitPhone}</span>
               </p>
-              <p>
-                온라인 제출을 원하시면 <a href="https://example.com/recruit-form" target="_blank" rel="noreferrer">지원서 링크</a>를 통해 보내도 됩니다.
-              </p>
+              {/* <p>
+                <strong>IT Network</strong> 는 개발에 관심이 많은 학생분들을 환영합니다.
+              </p> */}
             </div>
           </>
         ) : (

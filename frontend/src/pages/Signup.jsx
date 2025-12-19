@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../css/signup.css";
+import { useAuth } from "../context/AuthContext";
 
 const API_BASE_URL = import.meta.env.VITE_API_URL ?? "http://localhost:9999/api";
 
@@ -11,6 +12,7 @@ export default function Signup() {
     const [email, setEmail] = useState("");
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
+    const { login } = useAuth();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -43,6 +45,7 @@ export default function Signup() {
 
             // 성공 처리
             alert("회원가입 성공");
+            await login(email, password);
             navigate("/board", { replace: true });
             // 폼 초기화
             setUserId("");

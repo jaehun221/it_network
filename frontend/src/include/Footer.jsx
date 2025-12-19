@@ -8,7 +8,7 @@ export default function Footer() {
           <Link to="/" className="footer-logo">
             <img src="/logo.png" alt="IT Network logo" />
           </Link>
-          <p className="footer-email">contact@it-network.com</p>
+          <p className="footer-email">admin@it-network.kr</p>
           <hr style={{width:"40vh", marginTop:"5px", border:"1px solid #999"}}/>
           <p className="footer-copy">&copy; {new Date().getFullYear()} IT Network All Rights Reserved.</p>
         </div>

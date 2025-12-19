@@ -36,7 +36,7 @@
 }
 
 /* ===== 텍스트 ===== */
-.profile-text {
+#home .profile-text {
   margin-top: 12px;
   width: 100%;
   display: flex;
@@ -45,14 +45,14 @@
   gap: 8px;
 }
 
-.profile-title {
+#home .profile-title {
   font-size: 14px;
   color: #ccc;
   margin: 0;
   word-break: keep-all;
 }
 
-.profile-name {
+#home .profile-name {
   font-size: 26px;
   font-weight: bold;
   margin: 0;

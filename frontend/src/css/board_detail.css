@@ -37,6 +37,7 @@
   white-space: pre-wrap;
   line-height: 1.7;
   text-align: left;
+  min-height: 100px;
 }
 
 .comment-section {
