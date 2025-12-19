@@ -50,17 +50,13 @@ jobs:
           cache-to: type=gha,mode=max
 
 
-  deploy:
+    deploy:
     needs: build-push
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, prd]
 
     steps:
-      - name: Deploy to server via SSH
-        uses: appleboy/ssh-action@v1.2.0
-        with:
-          host: ${{ secrets.DEPLOY_HOST }}
-          username: ${{ secrets.DEPLOY_USER }}
-          key: ${{ secrets.DEPLOY_SSH_KEY }}
-          script: |
-            ~/apps/it_network/deploy.sh
+      - name: Deploy on server (local)
+        run: |
+          cd ~/apps/it_network
+          ./deploy.sh
 
