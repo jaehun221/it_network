@@ -1,7 +1,7 @@
 import React from "react";
 import { FaEnvelope, FaLinkedin, FaGithub, FaBuilding } from "react-icons/fa";
 import { SiNotion } from "react-icons/si"; // Notion 아이콘 추가
-import "../css/ProfileCard.css"
+import "../css/profileCard.css"
 
 export default function ProfileCard({
   imageUrl = "https://via.placeholder.com/180",
