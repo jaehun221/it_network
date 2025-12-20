@@ -190,7 +190,7 @@ export default function Home() {
             imageUrl="https://github.com/gaengji.png"
             name="강지원"
             title="부원"
-            affiliations={"대양CIS"}
+            affiliations={"비도제"}
             tagline="너정말핵심을찔렀어"
             github={"https://github.com/gaengji"}
           />
